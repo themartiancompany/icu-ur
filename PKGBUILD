@@ -1,4 +1,3 @@
-# $Id: PKGBUILD,v 1.10 2007/10/04 19:37:12 andyrtr Exp $
 # Maintainer: tobias <tobias@archlinux.net>
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
