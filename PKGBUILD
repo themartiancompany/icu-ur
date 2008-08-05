@@ -3,7 +3,7 @@
 
 pkgname=icu
 pkgver=3.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
@@ -15,12 +15,11 @@ md5sums=('a827dbc9d909febd4ec39b90386868ba')
 
 build() {
   cd ${startdir}/src/icu/source
-  ./configure --prefix=/usr --sysconfdir=/etc
+  ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share
   make || return 1
-  make DESTDIR=${startdir}/pkg install
+  make -j1 DESTDIR=${startdir}/pkg install || return 1 
 
   # Install license
   install -m644 -D $startdir/src/icu/license.html \
                    $startdir/pkg/usr/share/licenses/icu/license.html
- 
 }
