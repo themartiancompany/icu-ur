@@ -3,7 +3,7 @@
 
 pkgname=icu
 pkgver=51.1
-pkgrel=1
+pkgrel=2
 pkgdesc="International Components for Unicode library"
 arch=(i686 x86_64)
 url="http://www.icu-project.org/"
@@ -24,7 +24,8 @@ build() {
 
   ./configure --prefix=/usr \
 	--sysconfdir=/etc \
-	--mandir=/usr/share/man
+	--mandir=/usr/share/man \
+	--sbindir=/usr/bin
   make
 }
 
