@@ -50,5 +50,5 @@ package() {
   make -j1 DESTDIR=${pkgdir} install
 
   # Install license
-  install -Dm644 ${srcdir}/icu/license.html ${pkgdir}/usr/share/licenses/icu/license.html
+  install -Dm644 ${srcdir}/icu/LICENSE ${pkgdir}/usr/share/licenses/icu/LICENSE
 }
