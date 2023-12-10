@@ -2,8 +2,8 @@
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
 pkgname=icu
-pkgver=73.2
-pkgrel=2
+pkgver=74.1
+pkgrel=1
 pkgdesc="International Components for Unicode library"
 arch=(x86_64)
 url="https://icu.unicode.org"
@@ -13,8 +13,8 @@ makedepends=('python')
 provides=(libicu{data,i18n,io,test,tu,uc}.so)
 source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz{,.asc}
         ICU-22132.patch)
-# https://github.com/unicode-org/icu/releases/download/release-73-2/SHASUM512.txt
-sha512sums=('76dd782db6205833f289d7eb68b60860dddfa3f614f0ba03fe7ec13117077f82109f0dc1becabcdf4c8a9c628b94478ab0a46134bdb06f4302be55f74027ce62'
+# https://github.com/unicode-org/icu/releases/download/release-74-1/SHASUM512.txt
+sha512sums=('32c28270aa5d94c58d2b1ef46d4ab73149b5eaa2e0621d4a4c11597b71d146812f5e66db95f044e8aaa11b94e99edd4a48ab1aa8efbe3d72a73870cd56b564c2'
             'SKIP'
             '1178062ccfcf7ecc698c64132b3612e73f9c4b0bbfaa668ae2039f3eb4cb2722d0b08a9f45b057da10def7a308d5c8d14c0c644892e7f11092c9cc488c850ab7')
 #validpgpkeys=('BA90283A60D67BA0DD910A893932080F4FB419E3') #  "Steven R. Loomis (filfla-signing) <srloomis@us.ibm.com>" 
@@ -27,6 +27,9 @@ validpgpkeys=('3DA35301A7C330257B8755754058F67406EAA6AB') # Craig Cornelius <cco
 
 prepare() {
   cd icu/source
+  # Required fix for thunderbird 115 to show Calendar and sidebar properly
+  # https://bugzilla.mozilla.org/show_bug.cgi?id=1843007
+  # https://unicode-org.atlassian.net/browse/ICU-22132
   patch -Np1 < "../../ICU-22132.patch"
 }
 
