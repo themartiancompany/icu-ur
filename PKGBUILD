@@ -11,7 +11,7 @@ license=('custom:icu')
 depends=('gcc-libs' 'glibc' 'sh')
 makedepends=('python')
 provides=(libicu{data,i18n,io,test,tu,uc}.so)
-source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/${pkgname}4c-${pkgver//./_}-src.tgz{,.asc}
+source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz{,.asc}
         ICU-22132.patch)
 # https://github.com/unicode-org/icu/releases/download/release-74-1/SHASUM512.txt
 sha512sums=('32c28270aa5d94c58d2b1ef46d4ab73149b5eaa2e0621d4a4c11597b71d146812f5e66db95f044e8aaa11b94e99edd4a48ab1aa8efbe3d72a73870cd56b564c2'
@@ -52,5 +52,5 @@ package() {
   make -j1 DESTDIR="${pkgdir}" install
 
   # Install license
-  install -Dm644 "${srcdir}"/icu/LICENSE "${pkgdir}"/usr/share/licenses/icu/LICENSE
+  install -Dm644 "${srcdir}"/icu/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
