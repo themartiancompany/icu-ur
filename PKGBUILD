@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: AGPL-3.0
+#
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Art Gramlich <art@gramlich-net.com>
 
@@ -13,7 +15,10 @@ url="https://icu.unicode.org"
 license=('custom:icu')
 depends=('gcc-libs' 'glibc' 'sh')
 makedepends=('python')
-provides=(libicu{data,i18n,io,test,tu,uc}.so)
+provides=(
+  libicu
+  libicu{data,i18n,io,test,tu,uc}.so
+)
 source=(https://github.com/unicode-org/icu/releases/download/release-${pkgver//./-}/icu4c-${pkgver//./_}-src.tgz{,.asc}
         ICU-22132.patch)
 # https://github.com/unicode-org/icu/releases/download/release-74-1/SHASUM512.txt
@@ -57,3 +62,5 @@ package() {
   # Install license
   install -Dm644 "${srcdir}"/icu/LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
+
+# vim:set sw=2 sts=-1 et:
