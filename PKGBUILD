@@ -5,7 +5,10 @@ pkgname=icu
 pkgver=74.1
 pkgrel=1
 pkgdesc="International Components for Unicode library"
-arch=(x86_64)
+arch=(
+  x86_64
+  arm
+)
 url="https://icu.unicode.org"
 license=('custom:icu')
 depends=('gcc-libs' 'glibc' 'sh')
